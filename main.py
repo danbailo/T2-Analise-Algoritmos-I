@@ -10,6 +10,7 @@ from os import listdir
 from os.path import isfile, join
 from sys import argv
 from timeit import timeit
+from collections import defaultdict
 
 def mochila(number_items, weight_max, values_items, weight_items):
 	number_items=len(weight_items)
@@ -35,20 +36,29 @@ if __name__ == "__main__":
                 if line != '\n': lines.append(line.split())
         all_instaces[file] = lines
 
-    number_items = {}
-    weight_max = {}
+    number_items = defaultdict(list)
+    weight_max = defaultdict(list)
     values_items = {}
     weight_items = {}
 
     test = []
+    for i in all_instaces.items():
+        # print(i[0])
+        # print(i[1][0])
+        number_items[i[0]].append(i[1].pop(0))
+        weight_max[i[0]].append(i[1].pop(0))
+        # print(i[0])        
+        # print(i[1][0])
 
-    for i in all_instaces.values():
-        test.append(i.pop(0))
+        # weight_max[i[0]].append(i[1].pop(0))
 
-    print(test)
+    print(number_items)
+    print(weight_max)
 
-    for i in all_instaces.values():
-        print(i[0])
+    # print(test)
+
+    # for i in all_instaces.values():
+    #     print(i[0])
     # lines = []
     # with open('./instancias/s000.kp') as instance:
     #     for line in instance:
