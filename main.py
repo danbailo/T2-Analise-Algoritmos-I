@@ -38,22 +38,44 @@ if __name__ == "__main__":
 
     number_items = defaultdict(list)
     weight_max = defaultdict(list)
-    values_items = {}
+    values_items = defaultdict(list)
     weight_items = {}
 
-    test = []
     for i in all_instaces.items():
-        # print(i[0])
-        # print(i[1][0])
         number_items[i[0]].append(i[1].pop(0))
         weight_max[i[0]].append(i[1].pop(0))
-        # print(i[0])        
-        # print(i[1][0])
 
-        # weight_max[i[0]].append(i[1].pop(0))
 
-    print(number_items)
-    print(weight_max)
+    for i in all_instaces['s030.kp']:
+        print(i)
+
+
+    for i in all_instaces.items():
+        for k in i[1]:
+            values_items[i[0]].append(k[0])
+            # print(k[0])
+        print()
+
+    print(values_items['s030.kp'])
+    
+    # for i in number_items.values():
+    #     print(i[0][0])
+    
+    # for i in weight_max.values():
+    #     print(i[0][0])
+
+
+
+    # for i in all_instaces.values():
+        # print(i[::])
+
+
+
+    # for i in all_instaces.values():
+    #     print(i)
+
+    # for i in all_instaces.items():
+    #     print(i[1][0])
 
     # print(test)
 
