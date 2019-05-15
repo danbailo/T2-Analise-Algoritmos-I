@@ -11,7 +11,7 @@ from os.path import isfile, join
 from sys import argv
 from timeit import timeit
 
-def mochila(weight_max,number_items,weight_items, values_items):
+def mochila(number_items, weight_max, values_items, weight_items):
 	number_items=len(weight_items)
 	dotVec=lambda x,bs:sum((x[i]for i in range(len(x)) if bs[i]=="1"))
 	bs="".zfill(number_items)
@@ -23,8 +23,8 @@ def mochila(weight_max,number_items,weight_items, values_items):
 	return ans
 
 if __name__ == "__main__":
-    t0=timeit('mochila(50, 3, [10, 20, 30], [60, 100, 120])', 'from __main__ import mochila', number=1)
-    print('t0:',t0)
+    # t0=timeit('mochila(50, 3, [10, 20, 30], [60, 100, 120])', 'from __main__ import mochila', number=1)
+    # print('t0:',t0)
 
     all_files = sorted([f for f in listdir('./instancias') if isfile(join('./instancias', f))])
     all_instaces = {}
@@ -35,14 +35,30 @@ if __name__ == "__main__":
                 if line != '\n': lines.append(line.split())
         all_instaces[file] = lines
 
-    for i in all_instaces['s000.kp']:
+    number_items = {}
+    weight_max = {}
+    values_items = {}
+    weight_items = {}
+
+    test = []
+
+    for i in all_instaces.values():
+        test.append(i.pop(0))
+
+    print(test)
+
+    for i in all_instaces.values():
         print(i[0])
+    # lines = []
+    # with open('./instancias/s000.kp') as instance:
+    #     for line in instance:
+    #         if line != '\n': 
+    #             print('aqui',line.split())
+    #             lines.append(line.split())
+    # print(lines)
 
-    # for i in all_instaces['s000.kp']:
-    #     print(i)
+    # x = lines.pop(0)
 
-    # mochila()
+    # print(x)
 
-    # for i in all_instaces.values():
-    #     mochila(i[0], i[1], )
-        
+    # print(lines)
