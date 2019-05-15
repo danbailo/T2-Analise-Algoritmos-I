@@ -27,28 +27,15 @@ if __name__ == "__main__":
     print('t0:',t0)
 
     all_files = sorted([f for f in listdir('./instancias') if isfile(join('./instancias', f))])
-
-    # print(all_files)
-
     all_instaces = {}
+    for file in all_files:
+        lines = []
+        with open('./instancias/'+file) as instance:
+            for line in instance:
+                if line != '\n': lines.append(line.split())
+        all_instaces[file] = lines
 
-    # with open('./instancias/s000.kp') as instance:
-    #     for line in instance:
-    #         if line != '\n': lines.append(line.split())
+    print(all_instaces.keys())
 
-lines = []
-i = -1
-for file in all_files:
-    i +=1
-    with open('./instancias/'+file) as instance:
-        for line in instance:
-            if line != '\n': lines.append(line.split())
-    print(file)
-    all_instaces[file] = lines
-    lines = []
-    # print(lines)
-
-print(all_instaces.keys())
-
-print(all_instaces['s000.kp'])
-print(all_instaces['s002.kp'])
+    print(all_instaces['s000.kp'])
+    print(all_instaces['s002.kp'])
