@@ -35,7 +35,14 @@ if __name__ == "__main__":
                 if line != '\n': lines.append(line.split())
         all_instaces[file] = lines
 
-    print(all_instaces.keys())
+    for i in all_instaces['s000.kp']:
+        print(i[0])
 
-    print(all_instaces['s000.kp'])
-    print(all_instaces['s002.kp'])
+    # for i in all_instaces['s000.kp']:
+    #     print(i)
+
+    # mochila()
+
+    # for i in all_instaces.values():
+    #     mochila(i[0], i[1], )
+        
