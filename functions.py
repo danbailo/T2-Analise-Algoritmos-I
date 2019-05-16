@@ -40,7 +40,7 @@ def organize_instances(all_instances):
             weight_items[i[0]].append(int(k[1]))     
     return number_items, weight_max, values_items, weight_items
 
-def get_result(all_instances, number_items, weight_max, values_items, weight_items):
+def get_result(all_instances):
     result = []
     time_total = []
     for i in all_instances:
@@ -48,3 +48,13 @@ def get_result(all_instances, number_items, weight_max, values_items, weight_ite
         result.append(knapSack(int(number_items[i][0][0]),int(weight_max[i][0][0]),values_items[i],weight_items[i]))
         time_total.append(time()-start)
     return result, time_total
+
+if __name__ == "__main__":
+    all_instances = read_instances('./instancias/')
+
+    for i in all_instances.values():
+        # print('line:',i[0][0],i[1][0])
+        for k in i:
+            print(k[0])
+        print()
+
