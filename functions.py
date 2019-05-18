@@ -3,7 +3,20 @@ from os.path import isfile, join
 from collections import defaultdict
 from time import time
 
-def knapSack(number_items, weight_max, values_items, weight_items): 
+mem = {}
+def knapsack_recursive(weight_max, number_items, values_items, weight_items): 
+	if number_items == 0 or weight_max == 0:return 0
+	ans = mem.get((weight_max,number_items),None)
+	if ans!=None:return ans
+	if weight_items[number_items-1]>weight_max: 
+		ans = knapsack_recursive(weight_max, number_items-1, values_items, weight_items) 
+		mem[weight_max,number_items] = ans
+		return ans
+	ans = max(values_items[number_items-1]+knapsack_recursive(weight_max-weight_items[number_items-1],number_items-1,values_items,weight_items),knapsack_recursive(weight_max,number_items-1,values_items,weight_items)) 
+	mem[weight_max,number_items] = ans
+	return ans
+
+def knapsack_iterative(number_items, weight_max, values_items, weight_items): 
     K = [[0 for x in range(weight_max + 1)] for x in range(number_items + 1)]
     for i in range(number_items + 1): 
         for w in range(weight_max + 1): 
@@ -34,7 +47,6 @@ def organize_instances(all_instances):
     for i in all_instances.items():
         number_items[i[0]].append(i[1].pop(0))
         weight_max[i[0]].append(i[1].pop(0))
-    for i in all_instances.items():
         for k in i[1]:
             values_items[i[0]].append(int(k[0]))
             weight_items[i[0]].append(int(k[1]))     
@@ -45,6 +57,6 @@ def get_result(all_instances, number_items, weight_max, values_items, weight_ite
     time_total = []
     for i in all_instances:
         start = time()
-        result.append(knapSack(int(number_items[i][0][0]),int(weight_max[i][0][0]),values_items[i],weight_items[i]))
+        result.append(knapsack_iterative(int(number_items[i][0][0]),int(weight_max[i][0][0]),values_items[i],weight_items[i]))
         time_total.append(time()-start)
     return result, time_total
