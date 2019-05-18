@@ -3,18 +3,26 @@ from os.path import isfile, join
 from collections import defaultdict
 from time import time
 
-mem = {}
-def knapsack_recursive(weight_max, number_items, values_items, weight_items): 
-	if number_items == 0 or weight_max == 0:return 0
-	ans = mem.get((weight_max,number_items),None)
-	if ans!=None:return ans
-	if weight_items[number_items-1]>weight_max: 
-		ans = knapsack_recursive(weight_max, number_items-1, values_items, weight_items) 
-		mem[weight_max,number_items] = ans
-		return ans
-	ans = max(values_items[number_items-1]+knapsack_recursive(weight_max-weight_items[number_items-1],number_items-1,values_items,weight_items),knapsack_recursive(weight_max,number_items-1,values_items,weight_items)) 
-	mem[weight_max,number_items] = ans
-	return ans
+def mochiladin(w, n, valores, pesos):
+    if n == 0 or w == 0: return 0
+    ans=mem.get((w,n),None)
+    if ans!=None:return ans
+    if pesos[n-1]>w:
+        ans=mochiladin(w , n-1, valores, pesos) 
+        mem[w,n]=ans
+        return ans
+    ans=max(valores[n-1]+mochiladin(w-pesos[n-1],n-1,valores,pesos),mochiladin(w,n-1,valores,pesos)) 
+    mem[w,n]=ans
+    return ans
+
+def knapsack_recursive(number_items, weight_max, values_items, weight_items):
+    if number_items == 0 or weight_max == 0: return 0
+    if weight_items[number_items-1] > weight_max: return knapsack_recursive(number_items-1, weight_max, values_items, weight_items)
+    if mem[number_items][weight_max] is not False: return mem[number_items][weight_max]
+    temp = max(knapsack_recursive(number_items-1, weight_max-weight_items[number_items-1], values_items, weight_items)+values_items[number_items-1], knapsack_recursive(number_items-1, weight_max, values_items, weight_items))
+    mem[number_items][weight_max] = temp
+    return temp
+
 
 def knapsack_iterative(number_items, weight_max, values_items, weight_items): 
     K = [[0 for x in range(weight_max + 1)] for x in range(number_items + 1)]
@@ -53,10 +61,33 @@ def organize_instances(all_instances):
     return number_items, weight_max, values_items, weight_items
 
 def get_result(all_instances, number_items, weight_max, values_items, weight_items):
-    result = []
-    time_total = []
+    result_iterative = []
+    time_total_iterative = []
+    result_recursive = []
+    time_total_recursive = []    
     for i in all_instances:
+        print(i)
         start = time()
-        result.append(knapsack_iterative(int(number_items[i][0][0]),int(weight_max[i][0][0]),values_items[i],weight_items[i]))
-        time_total.append(time()-start)
-    return result, time_total
+        result_recursive.append(mochiladin(int(weight_max[i][0][0]),int(number_items[i][0][0]),values_items[i],weight_items[i]))
+        time_total_recursive.append(time()-start)
+        start = time()
+        result_iterative.append(knapsack_iterative(int(number_items[i][0][0]),int(weight_max[i][0][0]),values_items[i],weight_items[i]))
+        time_total_iterative.append(time()-start)
+    return result_iterative, time_total_iterative, result_recursive, time_total_recursive
+
+if __name__ == "__main__":
+    all_instances = read_instances('./instancias/')
+    number_items, weight_max, values_items, weight_items = organize_instances(all_instances)
+    result_recursive = []
+    time_total_recursive = [] 
+
+    for instance in all_instances:
+        mem = [[False for i in range(int(weight_max[instance][0][0])+1)] for j in range(int(number_items[instance][0][0])+1)]
+        start = time()
+        result_recursive.append(knapsack_recursive(int(number_items[instance][0][0]),int(weight_max[instance][0][0]),values_items[instance],weight_items[instance]))
+        # result_recursive.append(mochiladin(int(weight_max[i][0][0]),int(number_items[i][0][0]),values_items[i],weight_items[i]))
+        time_total_recursive.append(time()-start)
+
+
+    print('result_recursive', result_recursive)
+    print('time_total_recursive', time_total_recursive)        
