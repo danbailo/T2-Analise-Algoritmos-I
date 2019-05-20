@@ -3,6 +3,7 @@ from os.path import isfile, join
 from collections import defaultdict
 from time import time
 
+
 def mochiladin(w, n, valores, pesos):
     if n == 0 or w == 0: return 0
     ans=memoria.get((w,n),None)
@@ -68,28 +69,41 @@ def get_result(all_instances, number_items, weight_max, values_items, weight_ite
         time_total_iterative.append(time()-start)
     return result_iterative, time_total_iterative
 
-if __name__ == "__main__":
-    all_instances = read_instances('./instancias/')
-    number_items, weight_max, values_items, weight_items = organize_instances(all_instances)
+def get_result2(all_instances, number_items, weight_max, values_items, weight_items):
     result_list = []
-    result_dict = []
     time_list = [] 
-    time_dict = [] 
-
     for instance in all_instances:
-        mem = [[False for i in range(int(weight_max[instance][0][0])+1)] for j in range(int(number_items[instance][0][0])+1)]
-        memoria = {}
-        
+        globals()["mem"] = [[False for i in range(int(weight_max[instance][0][0])+1)] for j in range(int(number_items[instance][0][0])+1)]
         start = time()
         result_list.append(knapsack_recursive(int(number_items[instance][0][0]),int(weight_max[instance][0][0]),values_items[instance],weight_items[instance]))
         time_list.append(time()-start)
+    return result_list, time_list
+
+if __name__ == "__main__":
+    all_instances = read_instances('./instancias/')
+    number_items, weight_max, values_items, weight_items = organize_instances(all_instances)
+
+    print(get_result2(all_instances, number_items, weight_max, values_items, weight_items))
+
+    # result_list = []
+    # result_dict = []
+    # time_list = [] 
+    # time_dict = [] 
+
+    # for instance in all_instances:
+    #     mem = [[False for i in range(int(weight_max[instance][0][0])+1)] for j in range(int(number_items[instance][0][0])+1)]
+    #     memoria = {}
         
-        start = time()
-        result_dict.append(mochiladin(int(weight_max[instance][0][0]),int(number_items[instance][0][0]),values_items[instance],weight_items[instance]))
-        time_dict.append(time()-start)
+    #     start = time()
+    #     result_list.append(knapsack_recursive(int(number_items[instance][0][0]),int(weight_max[instance][0][0]),values_items[instance],weight_items[instance]))
+    #     time_list.append(time()-start)
+        
+    #     start = time()
+    #     result_dict.append(mochiladin(int(weight_max[instance][0][0]),int(number_items[instance][0][0]),values_items[instance],weight_items[instance]))
+    #     time_dict.append(time()-start)
 
-    print('result_list', result_list)
-    print('time_list', time_list)
+    # print('result_list', result_list)
+    # print('time_list', time_list)
 
-    print('result_dict', result_dict)
-    print('time_dict', time_dict)
+    # print('result_dict', result_dict)
+    # print('time_dict', time_dict)
