@@ -8,8 +8,10 @@ def plot_iterative(name_instance, time_iterative, result_iterative):
     plt.title('Resultado do algoritmo iterativo')
     plt.xlabel('Tempo/s')
     plt.ylabel('Resultado')
-    plt.plot(time_iterative, result_iterative)
+    #tentar nomear cada ponto do plot https://stackoverflow.com/questions/14432557/matplotlib-scatter-plot-with-different-text-at-each-data-point/14434334
+    #plt.annotate
     plt.plot(time_iterative, result_iterative, 'k.', label='Instâncias')
+    plt.plot(time_iterative, result_iterative)
     plt.legend()
     plt.grid()
 
@@ -20,8 +22,6 @@ def plot_iterative(name_instance, time_iterative, result_iterative):
     plt.xlabel('Tempo/s')
     plt.ylabel('Resultado')
     plt.plot(name_instance, result_iterative)
-    #tentar nomear cada ponto do plot https://stackoverflow.com/questions/14432557/matplotlib-scatter-plot-with-different-text-at-each-data-point/14434334
-    #plt.annotate
     plt.xticks(rotation=90, ha='right')
     plt.legend()
     plt.grid()
