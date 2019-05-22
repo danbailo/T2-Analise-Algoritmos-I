@@ -1,44 +1,27 @@
 from knapsack import Knapsack, read_instances, organize_instances
-import json
+import numpy as np
 import matplotlib.pyplot as plt
+import json
 
 #https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html
 
 def plot_iterative(name_instance, time_iterative, result_iterative):
-    time_iterative_sorted = sorted(time_iterative)
-    plt.style.use('default')
-    plt.title('Resultado do algoritmo iterativo')
-    plt.xlabel('Tempo/s')
-    plt.ylabel('Resultado')
-    plt.scatter(time_iterative, result_iterative, marker='.', color='k',label='Instâncias')
-    for i, txt in enumerate(name_instance):
-        plt.annotate(txt, (time_iterative[i], result_iterative[i]), fontsize=7)
-    plt.plot(time_iterative, result_iterative, color='orange')
+    plt.title('Resultado do algoritmo iterativo a partir de 1 execução')
+    plt.xlabel('Resultado')
+    plt.ylabel('Tempo/s')
+    plt.scatter(result_iterative, time_iterative, marker='.', color='orange',label='Instâncias')
     plt.legend()
     plt.grid()
-
-    plt.savefig('./img/iterative.pdf')
-    plt.show()
-
-    plt.title('Resultado do algoritmo iterativo, ordenado')
-    plt.xlabel('Tempo/s')
-    plt.ylabel('Resultado')
-    plt.scatter(time_iterative_sorted, result_iterative, marker='.', color='k',label='Instâncias')
-    for i, txt in enumerate(name_instance):
-        plt.annotate(txt, (time_iterative_sorted[i], result_iterative[i]))    
-    plt.plot(time_iterative_sorted, result_iterative, color='orange')
-    plt.grid()
-    plt.savefig('./img/iterative_sorted.pdf')
-    plt.show()  
+    plt.savefig('./img/scatter_iterative.pdf')
+    plt.show() 
 
     plt.title('Instância/Resultado - Iterativo')
     plt.xlabel('Instância')
     plt.ylabel('Resultado')
     plt.plot(name_instance, result_iterative, color='orange')
     plt.xticks(rotation=90, ha='right',fontsize=7)
-    # plt.legend()
     plt.grid()
-    plt.savefig('./img/instancia_iterative_recursive.pdf')
+    plt.savefig('./img/result_iterative.pdf')
     plt.show()      
 
     plt.title('Instância/Tempo - Iterativo')
@@ -46,127 +29,104 @@ def plot_iterative(name_instance, time_iterative, result_iterative):
     plt.ylabel('Resultado')
     plt.plot(name_instance, time_iterative, color='orange')
     plt.xticks(rotation=90, ha='right',fontsize=7)
-    # plt.legend()
     plt.grid()
-    plt.savefig('./img/instacia_tempo_iterative.pdf')
+    plt.savefig('./img/time_iterative.pdf')
     plt.show()  
 
 def plot_recursive(name_instance, time_recursive, result_recursive):
-    time_recursive_sorted = sorted(time_recursive)
-    plt.style.use('default')
-    plt.title('Resultado do algoritmo recursivo')
-    plt.xlabel('Tempo/s')
-    plt.ylabel('Resultado')
-    plt.scatter(time_recursive, result_recursive, marker='.', color='k',label='Instâncias')
-    for i, txt in enumerate(name_instance):
-        plt.annotate(txt, (time_recursive[i], result_recursive[i]))
-    plt.plot(time_recursive, result_recursive)
+    plt.title('Resultado do algoritmo recursivo a partir de 1 execução')
+    plt.xlabel('Resultado')
+    plt.ylabel('Tempo/s')
+    plt.scatter(result_recursive, time_recursive, marker='.', color='steelblue',label='Instâncias')
     plt.legend()
     plt.grid()
-
-    plt.savefig('./img/recursive.pdf')
+    plt.savefig('./img/scatter_recursive.pdf')
     plt.show()
-
-    plt.title('Resultado do algoritmo iterativo, ordenado')
-    plt.xlabel('Tempo/s')
-    plt.ylabel('Resultado')
-    plt.scatter(time_recursive_sorted, result_recursive, marker='.', color='k',label='Instâncias')
-    for i, txt in enumerate(name_instance):
-        plt.annotate(txt, (time_recursive_sorted[i], result_recursive[i]), fontsize=7)    
-    plt.plot(time_recursive_sorted, result_recursive)
-    plt.grid()
-    plt.savefig('./img/recursive_sorted.pdf')
-    plt.show()  
 
     plt.title('Instância/Resultado - Recursivo')
     plt.xlabel('Instância')
     plt.ylabel('Resultado')
-    plt.plot(name_instance, result_recursive)
+    plt.plot(name_instance, result_recursive, color='steelblue')
     plt.xticks(rotation=90, ha='right',fontsize=7)
-    # plt.legend()
     plt.grid()
-    plt.savefig('./img/instacia_resultado_recursive.pdf')
+    plt.savefig('./img/result_recursive.pdf')
     plt.show()      
 
     plt.title('Instância/Tempo - Recursivo')
     plt.xlabel('Tempo/s')
     plt.ylabel('Resultado')
-    plt.plot(name_instance, time_recursive)
+    plt.plot(name_instance, time_recursive, color='steelblue')
     plt.xticks(rotation=90, ha='right',fontsize=7)
-    # plt.legend()
     plt.grid()
-    plt.savefig('./img/instacia_tempo_recursive.pdf')
+    plt.savefig('./img/time_recursive.pdf')
     plt.show()  
 
-def plot_it_vs_rec(name_instance, time_iterative, result_iterative,time_recursive, result_recursive):
-    time_iterative_sorted = sorted(time_iterative)
-    time_recursive_sorted = sorted(time_recursive)
-
-    plt.style.use('default')
+def plot_two(name_instance, time_iterative, result_iterative,time_recursive, result_recursive):
     plt.title('Resultado das duas versões do algoritmo')
     plt.xlabel('Tempo/s')
     plt.ylabel('Resultado')
-    plt.scatter(time_iterative, result_iterative, marker='.', color='c',label='Iterativo')
-    plt.scatter(time_recursive, result_recursive, marker='.', color='m',label='Recursivo')
-    for i, txt in enumerate(name_instance):
-        plt.annotate(txt, (time_iterative[i], result_iterative[i]),fontsize=7)
-        plt.annotate(txt, (time_recursive[i], result_recursive[i]),fontsize=7)
-    plt.plot(time_iterative, result_iterative, label='Iterativo')
-    plt.plot(time_recursive, result_recursive, label='Recursivo')
+    plt.scatter(time_iterative, result_iterative, marker='.', color='orange', label='Iterativo')
+    plt.scatter(time_recursive, result_recursive, marker='.', color='steelblue', label='Recursivo')
     plt.legend()
     plt.grid()
-
-    plt.savefig('./img/iterative_recursive.pdf')
+    plt.savefig('./img/scatter_two.pdf')
     plt.show()
-
-    plt.title('Resultado das duas versões do algoritmo, ordenado')
-    plt.xlabel('Tempo/s')
-    plt.ylabel('Resultado')
-    plt.scatter(time_iterative_sorted, result_iterative, marker='.', color='c',label='Iterativo')
-    plt.scatter(time_recursive_sorted, result_recursive, marker='.', color='m',label='Recursivo')
-    for i, txt in enumerate(name_instance):
-        plt.annotate(txt, (time_iterative_sorted[i], result_iterative[i]),fontsize=7)    
-        plt.annotate(txt, (time_recursive_sorted[i], result_recursive[i]),fontsize=7)  
-
-    plt.plot(time_iterative_sorted, result_iterative, label='Iterativo')
-    plt.plot(time_recursive_sorted, result_recursive, label='Recursivo')
-    plt.legend()
-    plt.grid()
-    plt.savefig('./img/iterative_recursive_sorted.pdf')
-    plt.show()  
 
     plt.title('Instância/Resultado - Iterativo vs Recursivo')
     plt.xlabel('Instância')
     plt.ylabel('Resultado')
-    plt.plot(name_instance, result_iterative, label='Iterativo')
-    plt.plot(name_instance, result_recursive, label='Recursivo')
+    plt.plot(name_instance, result_iterative, color='orange', label='Iterativo')
+    plt.plot(name_instance, result_recursive, ':', color='steelblue', label='Recursivo')
     plt.xticks(rotation=90, ha='right',fontsize=7)
     plt.legend()
     plt.grid()
-    plt.savefig('./img/instancia_result_iterative_recursive.pdf')
+    plt.savefig('./img/result_two.pdf')
     plt.show()      
 
-    plt.title('Instância/Tempo - Iterativo')
+    plt.title('Instância/Tempo - Tempo médio para execução de uma instância')
     plt.xlabel('Tempo/s')
     plt.ylabel('Resultado')
-    plt.plot(name_instance, time_iterative, label='Iterativo')
-    plt.plot(name_instance, time_recursive, label='Recursivo')
+    plt.plot(name_instance, time_iterative, color='orange', label='Iterativo = '+str(np.mean(time_iterative))+' seg')
+    plt.plot(name_instance, time_recursive, color='steelblue', label='Recursivo = '+str(np.mean(time_recursive))+' seg')
     plt.xticks(rotation=90, ha='right',fontsize=7)
-    plt.legend()
+    plt.legend(fontsize=7)
     plt.grid()
-    plt.savefig('./img/instancia_tempo_iterative_recursive.pdf')
+    plt.savefig('./img/time_two.pdf')
     plt.show()      
 
+def get_average(number_result,lenght):
+    time_iterative = np.zeros(lenght)
+    time_recursive = np.zeros(lenght)
+    for n in range(1,number_result):
+        with open('./result/result'+str(n)+'.json','r') as file:
+            result = json.load(file)
+            time_iterative += np.array(list(element['time iterative'] for element in result.values()))
+            time_recursive += np.array(list(element['time recursive'] for element in result.values()))
+    return time_iterative/number_result,time_recursive/number_result, np.mean(time_iterative), np.mean(time_recursive)   
+
+def plot_average(name_instance, avg_iterative, avg_recursive, mean_iterative, mean_recursive, number_result):
+    plt.title('Resultado a partir da média de {} execuções'.format(number_result))
+    plt.xlabel('Instâncias')
+    plt.ylabel('Tempo/s')    
+    plt.plot(name_instance, avg_iterative, color='orange', label='Tempo das execuções iterativas = '+str(mean_iterative)+' seg')
+    plt.plot(name_instance, avg_recursive, color='steelblue', label='Tempo das execuções recursivas = '+str(mean_recursive)+' seg')
+    plt.xticks(rotation=90, ha='right',fontsize=7)
+    plt.legend(fontsize=7)
+    plt.grid()
+    plt.savefig('./img/avg_result.pdf')
+    plt.show()    
+
 if __name__ == "__main__":
-    with open("result.json") as f:
-	    result = json.load(f)
+    with open("./result/result1.json") as result_json: result = json.load(result_json)
 
     name_instance = list(result.keys())
     result_iterative = list(element['result iterative'] for element in result.values())
     time_iterative = list(element['time iterative'] for element in result.values())
     result_recursive = list(element['result recursive'] for element in result.values())
     time_recursive = list(element['time recursive'] for element in result.values())
+    avg_iterative, avg_recursive, mean_iterative, mean_recursive = get_average(10, len(name_instance))
 
     # plot_iterative(name_instance, time_iterative, result_iterative)
     # plot_recursive(name_instance, time_recursive, result_recursive)
-    plot_it_vs_rec(name_instance, time_iterative, result_iterative,time_recursive, result_recursive)
+    plot_two(name_instance, time_iterative, result_iterative,time_recursive, result_recursive)
+    plot_average(name_instance, avg_iterative, avg_recursive, mean_iterative, mean_recursive, 10)

@@ -63,4 +63,4 @@ def organize_instances(all_instances):
 if __name__ == "__main__":
     all_instances = read_instances('./instancias/')
     number_items, weight_max, values_items, weight_items = organize_instances(all_instances)
-    print(Functions().get_result(all_instances, number_items, weight_max, values_items, weight_items))
+    print(Knapsack().get_result(all_instances, number_items, weight_max, values_items, weight_items))

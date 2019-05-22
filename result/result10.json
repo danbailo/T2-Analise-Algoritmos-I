@@ -1,0 +1,188 @@
+{
+    "s000.kp": {
+        "result iterative": 20995,
+        "time iterative": 0.2746868133544922,
+        "result recursive": 20995,
+        "time recursive": 0.34754180908203125
+    },
+    "s001.kp": {
+        "result iterative": 19836,
+        "time iterative": 0.24983429908752441,
+        "result recursive": 19836,
+        "time recursive": 0.3248767852783203
+    },
+    "s002.kp": {
+        "result iterative": 20561,
+        "time iterative": 0.2558753490447998,
+        "result recursive": 20561,
+        "time recursive": 0.31444406509399414
+    },
+    "s003.kp": {
+        "result iterative": 19789,
+        "time iterative": 0.250002384185791,
+        "result recursive": 19789,
+        "time recursive": 0.29950475692749023
+    },
+    "s004.kp": {
+        "result iterative": 20961,
+        "time iterative": 0.214799165725708,
+        "result recursive": 20961,
+        "time recursive": 0.2706410884857178
+    },
+    "s005.kp": {
+        "result iterative": 19780,
+        "time iterative": 0.21780657768249512,
+        "result recursive": 19780,
+        "time recursive": 0.26934170722961426
+    },
+    "s006.kp": {
+        "result iterative": 21334,
+        "time iterative": 0.22202396392822266,
+        "result recursive": 21334,
+        "time recursive": 0.27428483963012695
+    },
+    "s007.kp": {
+        "result iterative": 16763,
+        "time iterative": 0.23479795455932617,
+        "result recursive": 16763,
+        "time recursive": 0.28638744354248047
+    },
+    "s008.kp": {
+        "result iterative": 19399,
+        "time iterative": 0.20191192626953125,
+        "result recursive": 19399,
+        "time recursive": 0.24805665016174316
+    },
+    "s009.kp": {
+        "result iterative": 18331,
+        "time iterative": 0.20848989486694336,
+        "result recursive": 18331,
+        "time recursive": 0.2584984302520752
+    },
+    "s010.kp": {
+        "result iterative": 20167,
+        "time iterative": 0.20862793922424316,
+        "result recursive": 20167,
+        "time recursive": 0.2633042335510254
+    },
+    "s011.kp": {
+        "result iterative": 20361,
+        "time iterative": 0.1950244903564453,
+        "result recursive": 20361,
+        "time recursive": 0.2464306354522705
+    },
+    "s012.kp": {
+        "result iterative": 18751,
+        "time iterative": 0.203080415725708,
+        "result recursive": 18751,
+        "time recursive": 0.26625967025756836
+    },
+    "s013.kp": {
+        "result iterative": 20056,
+        "time iterative": 0.21384358406066895,
+        "result recursive": 20056,
+        "time recursive": 0.2561161518096924
+    },
+    "s014.kp": {
+        "result iterative": 19031,
+        "time iterative": 0.19263195991516113,
+        "result recursive": 19031,
+        "time recursive": 0.24350500106811523
+    },
+    "s015.kp": {
+        "result iterative": 22377,
+        "time iterative": 0.22017908096313477,
+        "result recursive": 22377,
+        "time recursive": 0.27462315559387207
+    },
+    "s016.kp": {
+        "result iterative": 36378,
+        "time iterative": 0.9044227600097656,
+        "result recursive": 36378,
+        "time recursive": 1.2647490501403809
+    },
+    "s017.kp": {
+        "result iterative": 43703,
+        "time iterative": 0.9694736003875732,
+        "result recursive": 43703,
+        "time recursive": 1.2951741218566895
+    },
+    "s018.kp": {
+        "result iterative": 39025,
+        "time iterative": 0.969003438949585,
+        "result recursive": 39025,
+        "time recursive": 1.3131637573242188
+    },
+    "s019.kp": {
+        "result iterative": 37539,
+        "time iterative": 0.8621976375579834,
+        "result recursive": 37539,
+        "time recursive": 1.1699531078338623
+    },
+    "s020.kp": {
+        "result iterative": 37252,
+        "time iterative": 0.9059617519378662,
+        "result recursive": 37252,
+        "time recursive": 1.2452726364135742
+    },
+    "s021.kp": {
+        "result iterative": 42374,
+        "time iterative": 0.9090328216552734,
+        "result recursive": 42374,
+        "time recursive": 1.273087739944458
+    },
+    "s022.kp": {
+        "result iterative": 45031,
+        "time iterative": 0.8701045513153076,
+        "result recursive": 45031,
+        "time recursive": 1.256345272064209
+    },
+    "s023.kp": {
+        "result iterative": 39741,
+        "time iterative": 0.9816248416900635,
+        "result recursive": 39741,
+        "time recursive": 1.2763352394104004
+    },
+    "s024.kp": {
+        "result iterative": 41608,
+        "time iterative": 1.4408323764801025,
+        "result recursive": 41608,
+        "time recursive": 1.5730934143066406
+    },
+    "s025.kp": {
+        "result iterative": 37308,
+        "time iterative": 1.0370845794677734,
+        "result recursive": 37308,
+        "time recursive": 2.1921286582946777
+    },
+    "s026.kp": {
+        "result iterative": 42430,
+        "time iterative": 0.8777449131011963,
+        "result recursive": 42430,
+        "time recursive": 2.008025646209717
+    },
+    "s027.kp": {
+        "result iterative": 39259,
+        "time iterative": 0.9816350936889648,
+        "result recursive": 39259,
+        "time recursive": 1.3701047897338867
+    },
+    "s028.kp": {
+        "result iterative": 38128,
+        "time iterative": 0.8838465213775635,
+        "result recursive": 38128,
+        "time recursive": 1.211472511291504
+    },
+    "s029.kp": {
+        "result iterative": 42813,
+        "time iterative": 0.9342851638793945,
+        "result recursive": 42813,
+        "time recursive": 1.319490909576416
+    },
+    "s030.kp": {
+        "result iterative": 41637,
+        "time iterative": 0.8568611145019531,
+        "result recursive": 41637,
+        "time recursive": 1.2925000190734863
+    }
+}
