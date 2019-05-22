@@ -119,7 +119,7 @@ def plot_average(name_instance, avg_iterative, avg_recursive, mean_iterative, me
 if __name__ == '__main__':
     with open('./number_of_results.txt') as result_txt: number_of_results = int(result_txt.readline())
     if number_of_results == 0: 
-        print('Impossible generate a graphic without results!')
+        print('\nImpossible generate a graphic without results!\n')
         exit(-1)
     with open('./result/result1.json') as result_json: result = json.load(result_json)
     if not path.isdir('./img'):

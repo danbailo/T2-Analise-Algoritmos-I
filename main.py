@@ -7,9 +7,13 @@ import json
 def number_solutions(n):
     with open('./number_of_results.txt', 'w') as result_txt: result_txt.write(n)
     try:
-        int(n)
-        print("run '$ python3 main.py get_sol' to get your results and plot them")
-        return int(n)
+        number = int(n)
+        if number == 0: 
+            print('\n0 solutions?\n')
+            return False
+        print('\nSuccess!')
+        print("run '$ python3 main.py get_sol' to get your results and plot them.\n")
+        return number
     except ValueError as err:
         print('ERROR:',err)
         print('Please, only numbers!')
@@ -25,8 +29,8 @@ def get_solutions():
         print("Please, run '$ python3 main.py n_sol 1' by default, before execute 'get_sol'")
         exit(-1)
     if n == 0: 
-        print('0 results? OK! Done...')
-        return
+        print('\n0 results? OK! Done...\n')
+        return False
     print('Generating result...')
     for n in range(1, n+1):
         result_iterative, time_iterative, result_recursive, time_recursive = \
@@ -53,6 +57,6 @@ if __name__ == "__main__":
         if argv[1] == 'n_sol': number_solutions(argv[2])
         if argv[1] == 'get_sol': get_solutions()
     except IndexError as err: 
-        print('ERROR:',err)
-        print('Please, input at least one number - 1 is default')
-        print('View the README to see how to execute the code!')
+        print('\nERROR:',err)
+        print('$ python3 main.py [USE]')
+        print('View the README to see how to execute the code!\n')
