@@ -7,7 +7,11 @@
 
 ## How to use
 
-* `$ python3 main.py "NUMBER_OF_RESULTS"`
+* `$ python3 main.py n_sol "NUMBER_OF_RESULTS"`
+* *  Example - default
+* * `$ python3 main.py n_sol 1`
+* `$ python3 main.py get_sol`
+* `$ python3 plot.py`
 
 ## License MIT
 
