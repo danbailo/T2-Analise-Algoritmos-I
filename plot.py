@@ -1,9 +1,9 @@
 from knapsack import Knapsack, read_instances, organize_instances
+from platform import system
+from os import path,mkdir
 import numpy as np
 import matplotlib.pyplot as plt
 import json
-
-#https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html
 
 def plot_iterative(name_instance, time_iterative, result_iterative):
     plt.title('Resultado do algoritmo iterativo a partir de 1 execução')
@@ -117,9 +117,15 @@ def plot_average(name_instance, avg_iterative, avg_recursive, mean_iterative, me
     plt.show()    
 
 if __name__ == '__main__':
-    with open('./result/result1.json') as result_json: result = json.load(result_json)
     with open('./number_of_results.txt') as result_txt: number_of_results = int(result_txt.readline())
-
+    if number_of_results == 0: 
+        print('Impossible generate a graphic without results!')
+        exit(-1)
+    with open('./result/result1.json') as result_json: result = json.load(result_json)
+    if not path.isdir('./img'):
+        if system() == 'Linux': mkdir('./img')
+        elif system() == 'Windows': mkdir('./img')
+        elif system() == 'Darwin': mkdir('./img')        
     name_instance = list(result.keys())
     result_iterative = list(element['result iterative'] for element in result.values())
     time_iterative = list(element['time iterative'] for element in result.values())
@@ -127,7 +133,7 @@ if __name__ == '__main__':
     time_recursive = list(element['time recursive'] for element in result.values())
     avg_iterative, avg_recursive, mean_iterative, mean_recursive = get_average(number_of_results, len(name_instance))
 
-    # plot_iterative(name_instance, time_iterative, result_iterative)
-    # plot_recursive(name_instance, time_recursive, result_recursive)
+    plot_iterative(name_instance, time_iterative, result_iterative)
+    plot_recursive(name_instance, time_recursive, result_recursive)
     plot_two(name_instance, time_iterative, result_iterative,time_recursive, result_recursive)
     plot_average(name_instance, avg_iterative, avg_recursive, mean_iterative, mean_recursive, number_of_results)
