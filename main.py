@@ -6,8 +6,14 @@ import json
 
 def number_solutions(n):
     with open('./number_of_results.txt', 'w') as result_txt: result_txt.write(n)
-    print("run '$ python3 main.py get_sol' to get your results and plot them")
-    return int(n)
+    try:
+        int(n)
+        print("run '$ python3 main.py get_sol' to get your results and plot them")
+        return int(n)
+    except ValueError as err:
+        print('ERROR:',err)
+        print('Please, only numbers!')
+        print('View the README to see how to execute the code!')
 
 def get_solutions():
     try:
@@ -48,4 +54,5 @@ if __name__ == "__main__":
         if argv[1] == 'get_sol': get_solutions()
     except IndexError as err: 
         print('ERROR:',err)
+        print('Please, input at least one number - 1 is default')
         print('View the README to see how to execute the code!')
