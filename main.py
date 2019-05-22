@@ -10,7 +10,14 @@ def number_solutions(n):
     return int(n)
 
 def get_solutions():
-    with open('./number_of_results.txt', 'r') as result_txt: n = int(result_txt.readline())
+    try:
+        with open('./number_of_results.txt', 'r') as result_txt: n = int(result_txt.readline())
+    except FileNotFoundError as err:
+        print("Please, run '$ python3 main.py n_sol 1' by default, before execute 'get_sol'")
+        exit(-1)
+    except UnboundLocalError as err:
+        print("Please, run '$ python3 main.py n_sol 1' by default, before execute 'get_sol'")
+        exit(-1)
     if n == 0: 
         print('0 results? OK! Done...')
         return
@@ -39,4 +46,6 @@ if __name__ == "__main__":
     try:
         if argv[1] == 'n_sol': number_solutions(argv[2])
         if argv[1] == 'get_sol': get_solutions()
-    except IndexError: raise 'SEE README!'
+    except IndexError as err: 
+        print('ERROR:',err)
+        print('View the README to see how to execute the code!')
