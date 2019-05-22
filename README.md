@@ -1,5 +1,14 @@
 # Trabalho 2 - Análise de Algoritmos
 
+## Requeriments
+`python3`
+
+`$ pip3 install -r requirements.txt --user`
+
+## How to use
+
+`$ python3 main.py "NUMBER_OF_RESULTS"`
+
 ## License MIT
 
 
