@@ -45,6 +45,6 @@ def get_solutions(all_instances, number_items, weight_max, values_items, weight_
             if system() == 'Linux': mkdir('../result')            
             elif system() == 'Windows': mkdir('../result')
             elif system() == 'Darwin': mkdir('../result') 
-        with open('./result/result'+str(n)+'.json','w') as file: file.write(json.dumps(data,indent=4))
+        with open('../result/result'+str(n)+'.json','w') as file: file.write(json.dumps(data,indent=4))
     print('\nSuccess!')    
     print("run '$ python3 plot.py' to see the graphics\n")
