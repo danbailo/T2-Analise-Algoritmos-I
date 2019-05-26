@@ -4,16 +4,16 @@
 \usepackage{amsmath}
 \usepackage{indentfirst}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{multicol,lipsum}
 \usepackage{cite}
 \usepackage{placeins}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
-\usepackage{graphicx}
 \usepackage{float}
 \usepackage{textcomp}
 \usepackage{xcolor}
-\usepackage{subfigure}
 \usepackage{enumerate}
 \usepackage{wrapfig}
 \usepackage{cite}
@@ -76,11 +76,13 @@ Este trabalho consiste em mostrar os resultados obtidos a partir da execução
 do algoritmo da {\it Mochilha Boolena} ou {\it Knapsack 0/1}, em suas versões dinâmicas.
 Feito isso, dada as instâncias para realizar os testes, foi comparado o tempo de execução do algoritmo em questão, nas suas duas versões dinâmicas, {\it Top-Down} e  {\it Bottom-Up}.
 
-Este trabalho possui um repositório online para melhor controle do versionamento e testes conforme a mudança do programa final.
-\href{}{}
+Este trabalho possui um repositório online para melhor controle do versionamento e testes conforme a mudança do programa final.\\
+\url{https://github.com/danbailo/T2-Analise-Algoritmos-I}
 \newpage
 
 \section{Knapsack Top-Down}
+
+
 \begin{lstlisting}[basicstyle=\footnotesize, language=Python]
 def topDown(number_items, weight_max, values_items, weight_items):
     if number_items == 0 or weight_max == 0: return 0
@@ -97,6 +99,29 @@ def topDown(number_items, weight_max, values_items, weight_items):
     mem[number_items][weight_max] = temp
     return temp    
 \end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{.6\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{../img/scatter_topDown.pdf}
+      \captionof{figure}{A figure}
+      \label{fig:test1}
+    \end{minipage}%
+    \begin{minipage}{.6\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{../img/result_topDown.pdf}
+      \captionof{figure}{Another figure}
+      \label{fig:test2}
+    \end{minipage}
+    \end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{../img/scatter_topDown.pdf}
+    \caption{Gráfico do Tempo/Resultado}
+    \label{fig:scatter_topDown}
+\end{figure}
 
 \newpage
 \section{Knapsack Bottom-Up}
