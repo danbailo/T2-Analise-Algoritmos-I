@@ -4,15 +4,15 @@ from collections import defaultdict
 from time import time
 
 class Knapsack:       
-    def __knapsack_recursive(self, number_items, weight_max, values_items, weight_items):
+    def __knapsack_topDown(self, number_items, weight_max, values_items, weight_items):
         if number_items == 0 or weight_max == 0: return 0
-        if weight_items[number_items-1] > weight_max: return self.__knapsack_recursive(number_items-1, weight_max, values_items, weight_items)
+        if weight_items[number_items-1] > weight_max: return self.__knapsack_topDown(number_items-1, weight_max, values_items, weight_items)
         if self.mem[number_items][weight_max] is not False: return self.mem[number_items][weight_max]
-        temp = max(self.__knapsack_recursive(number_items-1, weight_max-weight_items[number_items-1], values_items, weight_items)+values_items[number_items-1], self.__knapsack_recursive(number_items-1, weight_max, values_items, weight_items))
+        temp = max(self.__knapsack_topDown(number_items-1, weight_max-weight_items[number_items-1], values_items, weight_items)+values_items[number_items-1], self.__knapsack_topDown(number_items-1, weight_max, values_items, weight_items))
         self.mem[number_items][weight_max] = temp
         return temp
 
-    def __knapsack_iterative(self, number_items, weight_max, values_items, weight_items): 
+    def __knapsack_bottomUp(self, number_items, weight_max, values_items, weight_items): 
         K = [[0 for x in range(weight_max + 1)] for x in range(number_items + 1)]
         for i in range(number_items + 1): 
             for w in range(weight_max + 1): 
@@ -22,19 +22,19 @@ class Knapsack:
         return K[number_items][weight_max]
 
     def get_result(self, all_instances, number_items, weight_max, values_items, weight_items):
-        result_recursive = []
-        time_recursive = []
-        result_iterative = []
-        time_iterative = []
+        result_topDown = []
+        time_topDown = []
+        result_bottomUp = []
+        time_bottomUp = []
         for instance in all_instances:
             start = time()
-            result_iterative.append(self.__knapsack_iterative(int(number_items[instance][0][0]),int(weight_max[instance][0][0]),values_items[instance],weight_items[instance]))
-            time_iterative.append(time()-start)
+            result_bottomUp.append(self.__knapsack_bottomUp(int(number_items[instance][0][0]),int(weight_max[instance][0][0]),values_items[instance],weight_items[instance]))
+            time_bottomUp.append(time()-start)
             self.mem = [[False for i in range(int(weight_max[instance][0][0])+1)] for j in range(int(number_items[instance][0][0])+1)]
             start = time()
-            result_recursive.append(self.__knapsack_recursive(int(number_items[instance][0][0]),int(weight_max[instance][0][0]),values_items[instance],weight_items[instance]))
-            time_recursive.append(time()-start)
-        return result_iterative, time_iterative, result_recursive, time_recursive
+            result_topDown.append(self.__knapsack_topDown(int(number_items[instance][0][0]),int(weight_max[instance][0][0]),values_items[instance],weight_items[instance]))
+            time_topDown.append(time()-start)
+        return result_bottomUp, time_bottomUp, result_topDown, time_topDown
 
 def read_instances(directory):
     all_files = sorted([f for f in listdir(directory) if isfile(join(directory, f))])
