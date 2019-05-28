@@ -37,11 +37,11 @@ class Knapsack:
         return result_bottomUp, time_bottomUp, result_topDown, time_topDown
 
 def read_instances(directory):
-    all_files = sorted([f for f in listdir(directory) if isfile(join(directory, f))])
+    all_files = sorted([f for f in listdir(directory) if isfile(join(directory, f))]) #pega o nome de todos os arquivos
     all_instances = {}
     for file in all_files:
         lines = []
-        with open(directory+file) as instance:
+        with open(directory+file) as instance: #../Trabalho II/instancias/s000.kp até o ultimo
             for line in instance:
                 if line != '\n': lines.append(line.split())
         all_instances[file] = lines
@@ -61,6 +61,6 @@ def organize_instances(all_instances):
     return number_items, weight_max, values_items, weight_items
 
 if __name__ == "__main__":
-    all_instances = read_instances(r'../Trabalho\ II/instancias')
+    all_instances = read_instances('../Trabalho II/instancias/')
     number_items, weight_max, values_items, weight_items = organize_instances(all_instances)
-    print(Knapsack().get_result(all_instances, number_items, weight_max, values_items, weight_items))
+    # print(Knapsack().get_result(all_instances, number_items, weight_max, values_items, weight_items))
