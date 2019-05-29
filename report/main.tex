@@ -178,7 +178,7 @@ foram obtidos.
     \caption{Resultados Top-Down para 1 execução}
     \label{tab:topdown_exec}
 \end{table}
-\vspace{-15pt}
+% \vspace{-15pt}
 \begin{table}[!htb]
     \begin{tabular}{ll}
     \textbf{Amplitude:} & 1.6256 segundos \\
@@ -251,7 +251,7 @@ foram obtidos.
     \label{tab:bottomup_exec}
 \end{table}
 
-\vspace{-15pt}
+% \vspace{-15pt}
 
 \begin{table}[!htb]
     \begin{tabular}{ll}
@@ -324,7 +324,7 @@ se esperar um resultado como esse, como vimos na página \pageref{sec:introducao
     \end{minipage}
 \end{figure}
 \newpage
-\subsection{Exprimindo Resultados}
+\subsection{Minimizando Resultados}
 A fim de comprovar o comportamento dos gráficos, decidi executar {\bf 100 vezes} as instâncias com o objetivo de minimizar
 a variação do tempo de execução de cada instância.
 
@@ -347,7 +347,7 @@ Após coletar os dados de todas as execuções, foi se calculado a média total 
 mais exprimido a fim de minimizar a variação.
 \begin{table}[!htb]
     \begin{tabular}{ll}
-        {\bf Tempo de execução minimizado}: 23.4056 segundos\\
+        {\bf Tempo de execução}: 23.4056 segundos\\
         {\bf Média de execução por instância}: 0.7550 segundos\\
         {\bf Maior tempo gasto por uma das instâncias}: 1.3737 segundos\\
         {\bf Menor tempo gasto por uma das instâncias}: 0.2419 segundos \\
@@ -358,7 +358,7 @@ mais exprimido a fim de minimizar a variação.
     \label{tab:result_tot_topdown}
 \end{table}
 
-\vspace{-15pt}
+% \vspace{-15pt}
 
 \begin{table}[!htb]
     \begin{tabular}{ll}
@@ -371,8 +371,40 @@ mais exprimido a fim de minimizar a variação.
     \caption{Estatísticas}
     \label{tab:estatistica_tot_topdown}
 \end{table}
-\newpage
+
+\subsubsection{Ganhos}
+
+Ao compararmos os resultados das tabelas \ref{tab:topdown_exec} e \ref{tab:estatistica_topdown} com as 
+tabelas \ref{tab:result_tot_topdown} e \ref{tab:estatistica_tot_topdown}, podemos ver qual é a diferença entre 
+entre os seguintes resultados obtidos:
+\begin{table}[!htb]
+    \begin{tabular}{ll}
+        {\bf p/ Tempo de execução}: 3.4031 segundos\\
+        {\bf p/ Média de execução por instância}: 0.1097 segundos\\
+        {\bf p/ Maior tempo gasto por uma das instâncias}: 0.4959 segundos\\
+        {\bf p/ Menor tempo gasto por uma das instâncias}: 0.0020 segundos \\
+    \end{tabular}
+    \caption{Diferença de 1 execução para 100 execuções}
+    \label{tab:diff_topdown}
+\end{table}
+
+% \vspace{-15pt}
+
+\begin{table}[!htb]
+    \begin{tabular}{ll}
+        {\bf p/ Amplitude}: 0.4939 segundos\\
+        {\bf p/ Erro}: 0.0165 segundos\\
+        {\bf p/ Variância}: 0.098 segundos\\
+        {\bf p/ Desvio Padrão}: 0.0906 segundos\\
+        {\bf p/ Desvio Absoluto}: 0.1039 segundos
+    \end{tabular}
+    \caption{Estatísticas}
+    \label{tab:diff_estatistica_topdown}
+\end{table}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hrulefill
+
 \subsection{Bottom-Up}
 \begin{table}[!htb]
     \begin{tabular}{ll}
@@ -383,10 +415,11 @@ mais exprimido a fim de minimizar a variação.
     \label{tab:total_bottomup}
 \end{table}
 % aqui falar do porque de fazer a media...\\
-O mesmo processo foi realizado para se obter os dados exprimidos para o {\it Bottom-Up}.
+Após coletar os dados de todas as execuções, foi se calculado a média total para cada item e obtido um resultado 
+mais exprimido a fim de minimizar a variação.
 \begin{table}[!htb]
     \begin{tabular}{ll}
-        {\bf Tempo de execução minimizado}: 17.3375 segundos\\
+        {\bf Tempo de execução}: 17.3375 segundos\\
         {\bf Média de execução por instância}: 0.5592 segundos\\
         {\bf Maior tempo gasto por uma das instâncias}: 0.9883 segundos\\
         {\bf Menor tempo gasto por uma das instâncias}: 0.1929 segundos \\
@@ -397,7 +430,7 @@ O mesmo processo foi realizado para se obter os dados exprimidos para o {\it Bot
     \label{tab:result_tot_bottomup}
 \end{table}
 
-\vspace{-15pt}
+% \vspace{-15pt}
 
 \begin{table}[!htb]
     \begin{tabular}{ll}
@@ -410,44 +443,84 @@ O mesmo processo foi realizado para se obter os dados exprimidos para o {\it Bot
     \caption{Estatísticas}
     \label{tab:estatistica_tot_bottomup}
 \end{table}
+
+\subsubsection{Ganhos}
+
+Ao compararmos os resultados das tabelas \ref{tab:bottomup_exec} e \ref{tab:estatistica_bottomup} com as 
+tabelas \ref{tab:result_tot_bottomup} e \ref{tab:estatistica_tot_bottomup}, podemos ver qual é a diferença entre 
+entre os seguintes resultados obtidos:
+\begin{table}[!htb]
+    \begin{tabular}{ll}
+        {\bf p/ Tempo de execução}: 0.7914 segundos\\
+        {\bf p/ Média de execução por instância}: 0.0255 segundos\\
+        {\bf p/ Maior tempo gasto por uma das instâncias}: 0.1900 segundos\\
+        {\bf p/ Menor tempo gasto por uma das instâncias}: 0.0008 segundos \\
+    \end{tabular}
+    \caption{Diferença de 1 execução para 100 execuções}
+    \label{tab:diff_bottomup}
+\end{table}
+
+% \vspace{-15pt}
+
+\begin{table}[!htb]
+    \begin{tabular}{ll}
+        {\bf p/ Amplitude}: 0.1894 segundos\\
+        {\bf p/ Erro}: 0.0045 segundos\\
+        {\bf p/ Variância}: 0.0181 segundos\\
+        {\bf p/ Desvio Padrão}: 0.0250 segundos\\
+        {\bf p/ Desvio Absoluto}: 0.0182 segundos
+    \end{tabular}
+    \caption{Estatísticas}
+    \label{tab:diff_estatistica_bottomup}
+\end{table}
+
+\noindent
+Feito isso, o objetivo de minimizar a variação foi atingida...
+
 \newpage
-% \clearpage
+
 \section{Resultados Obtidos}
-Ao anasilar as tabelas \ref{tab:topdown_exec}, \ref{tab:bottomup_exec} que mostram os resultados a
-partir da execução de uma única instância, podemos ver que mesmo após 100 execuções, o comportamento geral
-se mantém, como podemos ver nas tabelas \ref{tab:result_tot_topdown} e \ref{tab:result_tot_bottomup}.
-Tendo estes resultados \dots
+Ao anasilar as tabelas \ref{tab:diff_topdown} e \ref{tab:diff_bottomup} que mostram a diferença dos resultados
+atingidos, podemos comparar com o seguinte grafico
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.6\textwidth]{../img/avg_scatter.pdf}
-    \caption{Gráfico do Resultado/Instância}
+    \includegraphics[width=0.7\textwidth]{../img/avg_scatter.pdf}
+    \caption{Gráfico do Tempo/Resultado}
     \label{fig:avg_scatter}
 \end{figure}
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.8\textwidth]{../img/avg_result.pdf}
-    \caption{Gráfico do Resultado/Instância}
+    \caption{Gráfico do Tempo/Instância}
     \label{fig:avg_result}
 \end{figure}
 \clearpage
 
 \subsection{Resultados Finais}
+Com isso, podemos concluir que, o objetivo de minizar a variação do tempo de cada execução foi atingida.
 
+No gráfico abaixo, temos ilustrado o tempo que demandou cada resultado, sendo que, as legendas que possuem
+{\it ''AVG''} no nome, significa que são os gŕaficos representados após realizar a média entre as 100 execuções.
+
+Esta figura, tanto quanto a figura \ref{fig:mixed_scatter}, representa uma união de todos resultados mostrados até agora.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.82\textwidth]{../img/mixed_scatter.pdf}
+    \includegraphics[width=1\textwidth]{../img/mixed_result.pdf}
+    \caption{Gráfico do Tempo/Instância - Mesclado}
+    \label{fig:mixed_result}
+\end{figure}
+\newpage
+
+Ao analisarmos o gráfico abaixo, podemos ver que a diferença que \nameref{sec:topdown} sofreu após passar
+pelo processo de refinação foi gritante.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../img/mixed_scatter.pdf}
     \caption{Gráfico do Resultado/Instância}
     \label{fig:mixed_scatter}
-\end{figure}
-
-falar dos dados estatisticos e comparar o tempo do max e min, antes de fazer a media ..........
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.82\textwidth]{../img/mixed_result.pdf}
-    \caption{Gráfico do Resultado/Instância}
-    \label{fig:mixed_result}
 \end{figure}
 
 \end{document}
