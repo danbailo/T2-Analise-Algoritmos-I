@@ -88,7 +88,8 @@
 \label{sec:resumo}
 Este trabalho consiste em mostrar os resultados obtidos a partir da execução
 do algoritmo da {\it Mochilha Boolena} ou {\it Knapsack 0/1}, em suas versões dinâmicas.
-Feito isso, dada as instâncias para aplicar os algoritmos, foi comparado o tempo de execução para cada instância 
+
+Feito isso, dada as instâncias contento os dados necessários para aplicar os algoritmos, foi comparado o tempo de execução para cada instância 
 nas suas versões dinâmicas, {\it Top-Down} e  {\it Bottom-Up}.\\
 
 {\bf Considerar o seguinte ambiente para a obtenção dos resultados:}
@@ -102,20 +103,17 @@ nas suas versões dinâmicas, {\it Top-Down} e  {\it Bottom-Up}.\\
     \end{itemize}
     \item Memória: 8GB RAM
 \end{itemize}
-Este trabalho foi armazenado num repositório {\it GitHub} para melhor controle do versionamento do código.\\
+Este trabalho foi armazenado num repositório {\it GitHub} para melhor controle do versionamento do programa.\\
 \url{https://github.com/danbailo/T2-Analise-Algoritmos-I}
 \clearpage
 
-% O programa é executado a partir da {\it main.py}, onde este faz a chamada de outros subprogramas, como por exemplo o 
-% subprograma que é responsável por realizar o cálculo das instâncias aplicando o algortimo do {\it Knapsack} e o subprograma
-% responsável por coletar os dados e plotar os gráficos dos resultados obtidos. O funcionamento do algoritmo, resumidamente
-% lê a pasta das instâncias fornecidas pelo professor, onde contem 31 instâncias, seguindo um determinado formato que também foi 
-% fornecido por ele. Após a leitura de todas as instâncias, os dados são organizados no mesmo formato 
-% fornecido pelo professor,{\it número de itens, capacidade da mochila, valor e peso do item}, em seguida é aplicado aos algoritmos e 
-% os resultados são armazenados em arquivos {\it .JSON}
-
-
 \section{Introdução}\label{sec:introducao}
+
+Supondo que uma mochila com capacidade total de $W$ e $n$ itens distintos, em que cada um dos itens
+possui um peso $p_i$ e um valor $v_i$ , tal que $1 \leq i \leq n$. O {\it Problema da Mochila 0/1} consiste em determinar o 
+valor máximo que podemos obter colocando um subconjunto de itens na mochila, tal que o somatório
+do peso dos itens não ultrapasse a capacidade $W$ da mochila.
+
 Visto que na {\it Programação Dinâmica} os problemas podem ser abordados de duas formas, o {\it Top-Down} e o {\it Bottom-Up}
 , devemos saber que entre eles existem vantagens e desvantagens quando comparados um com o outro.\\~\\
 {\bf Top-Down}
@@ -200,13 +198,13 @@ Na figura \ref{fig:time_topDown} conseguimos vizualizar o tempo de execução pa
     \begin{minipage}{0.55\textwidth}
         \centering
         \includegraphics[width=1.1\textwidth]{../img/scatter_topDown.pdf}
-        \caption{Tempo/Resultado}
+        \caption{Tempo/Resultado.}
         \label{fig:scatter_topDown}
     \end{minipage}%
     \begin{minipage}{0.55\textwidth}
         \centering
         \includegraphics[width=1.1\textwidth]{../img/result_topDown.pdf}
-        \caption{Resultado/Instância}
+        \caption{Resultado/Instância.}
         \label{fig:result_topDown}
     \end{minipage}
 \end{figure}
@@ -214,7 +212,7 @@ Na figura \ref{fig:time_topDown} conseguimos vizualizar o tempo de execução pa
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.9\textwidth]{../img/time_topDown.pdf}
-    \caption{Gráfico do Tempo/Instância}
+    \caption{Gráfico do Tempo/Instância.}
     \label{fig:time_topDown}
 \end{figure}
 
@@ -274,13 +272,13 @@ Na figura \ref{fig:time_topDown} conseguimos vizualizar o tempo de execução pa
     \begin{minipage}{0.55\textwidth}
         \centering
         \includegraphics[width=1.1\textwidth]{../img/scatter_bottomUp.pdf}
-        \caption{Tempo/Resultado}
+        \caption{Tempo/Resultado.}
         \label{fig:scatter_bottomUp}
     \end{minipage}%
     \begin{minipage}{0.55\textwidth}
         \centering
         \includegraphics[width=1.1\textwidth]{../img/result_bottomUp.pdf}
-        \caption{Resultado/Instância}
+        \caption{Resultado/Instância.}
         \label{fig:result_bottomUp}
     \end{minipage}
 \end{figure}
@@ -288,7 +286,7 @@ Na figura \ref{fig:time_topDown} conseguimos vizualizar o tempo de execução pa
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.9\textwidth]{../img/time_bottomUp.pdf}
-    \caption{Gráfico do Tempo/Instância}
+    \caption{Gráfico do Tempo/Instância.}
     \label{fig:time_bottomUp}
 \end{figure}
 
@@ -300,11 +298,11 @@ serem escritos e abordarem ideias diferentes, o objetivo final é o mesmo.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.6\textwidth]{../img/result_two.pdf}
-    \caption{Gráfico do Resultado/Instância}
+    \caption{Gráfico comparativo dos resultados.}
     \label{fig:result_two}
 \end{figure}
 
-Como podemos ver, o tempo necessário para atingir os mesmos resultados são bem maiores quando
+Abaixo, podemos ver que o tempo necessário para atingir os mesmos resultados são bem maiores quando
 comparamos o \nameref{sec:topdown} ao \nameref{sec:bottomup}, computacionalmente falando. Porém, era de
 se esperar um resultado como esse, como vimos na página \pageref{sec:introducao} as características de cada um.
 
@@ -328,10 +326,10 @@ se esperar um resultado como esse, como vimos na página \pageref{sec:introducao
 A fim de comprovar o comportamento dos gráficos, decidi executar {\bf 100 vezes} as instâncias com o objetivo de minimizar
 a variação do tempo de execução de cada instância.
 
-Para cada instância é armazenado seu tempo de execução individual, logo, foi necessário a cada execução somar o tempo
-de cada instância para obter o tempo gasto para esse algoritmo para uma única execução. Feito isso, bastou
-repetir o mesmo processo para todas iterações. Assim, obtive o tempo total de execução para os dois algoritmos. O tempo
-médio é em relação ao tempo que uma única instância gastou em 100 execuções.
+Para cada instância é armazenado seu tempo de execução individual, logo, foi necessário a cada execução
+armazenar e somar o tempo de cada instância para obter o tempo gasto para esse algoritmo para uma única execução. Feito isso, bastou
+repetir o mesmo processo para todas iterações. Assim, obtive o tempo total de execução para os dois algoritmos. 
+O tempo médio é em relação ao tempo que uma única instância gastou em 100 execuções.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Top-Down}
 \begin{table}[!htb]
@@ -475,13 +473,17 @@ entre os seguintes resultados obtidos:
 \end{table}
 
 \noindent
-Feito isso, o objetivo de minimizar a variação foi atingida...
+Como podemos ver, o objetivo de minimizar a variação foi atingido. Visto que, para o {\it Top-Down} teve um
+ganho de 3.4031 segundos, tempo que, computacionalmente falando, já é muito alto!
+
+Em relação aos dados estatísticos, todos foram minimizados também, isso mostra que, quanto menor o erro, variação e 
+o desvio, mais próximo do exato é o resultado final.
 
 \newpage
 
 \section{Resultados Obtidos}
-Ao anasilar as tabelas \ref{tab:diff_topdown} e \ref{tab:diff_bottomup} que mostram a diferença dos resultados
-atingidos, podemos comparar com o seguinte grafico
+Ao anasilar as tabelas \ref{tab:result_tot_topdown} e \ref{tab:result_tot_bottomup} que mostram 
+os novos resultados atingidos após efetuar a média das execuções, temos os seguintes gráficos.
 
 \begin{figure}[!htb]
     \centering
@@ -500,27 +502,25 @@ atingidos, podemos comparar com o seguinte grafico
 \subsection{Resultados Finais}
 Com isso, podemos concluir que, o objetivo de minizar a variação do tempo de cada execução foi atingida.
 
-No gráfico abaixo, temos ilustrado o tempo que demandou cada resultado, sendo que, as legendas que possuem
+Nos gráficos abaixo, temos ilustrado o tempo que demandou cada resultado, sendo que, as legendas que possuem
 {\it ''AVG''} no nome, significa que são os gŕaficos representados após realizar a média entre as 100 execuções.
+Logo, é uma mesclagem das figuras \ref{fig:time_two} e \ref{fig:avg_result}.
 
-Esta figura, tanto quanto a figura \ref{fig:mixed_scatter}, representa uma união de todos resultados mostrados até agora.
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=1\textwidth]{../img/mixed_result.pdf}
-    \caption{Gráfico do Tempo/Instância - Mesclado}
-    \label{fig:mixed_result}
-\end{figure}
-\newpage
-
-Ao analisarmos o gráfico abaixo, podemos ver que a diferença que \nameref{sec:topdown} sofreu após passar
-pelo processo de refinação foi gritante.
+Portanto, estas figuras representam a união de todos resultados mostrados até agora.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1\textwidth]{../img/mixed_scatter.pdf}
-    \caption{Gráfico do Resultado/Instância}
-    \label{fig:mixed_scatter}
+    \begin{minipage}{0.55\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{../img/mixed_scatter.pdf}
+        \caption{Resultados - Mesclado}
+        \label{fig:mixed_result}   
+    \end{minipage}%
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{../img/mixed_result.pdf}
+        \caption{Resultados - Mesclado}
+        \label{fig:mixed_scatter}
+    \end{minipage}
 \end{figure}
-
 \end{document}
