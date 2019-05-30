@@ -1,4 +1,4 @@
-from knapsack import Knapsack, read_instances, organize_instances
+from knapsack import read_instances, organize_instances
 from result import number_solutions, get_solutions
 from sys import argv
 

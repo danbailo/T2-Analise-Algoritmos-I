@@ -1,5 +1,4 @@
-from knapsack import Knapsack, read_instances, organize_instances
-from statistic import load_result, get_average
+from statistic import Statistic
 from platform import system
 from os import path,mkdir
 import matplotlib.pyplot as plt
@@ -41,7 +40,6 @@ class Plot:
         plt.xlabel('Instância')
         plt.ylabel('Resultado')
         plt.plot(self.__name_instance, self.__result_topDown, color='steelblue')
-        # plt.legend(loc='upper left')
         plt.xticks(rotation=90, ha='right',fontsize=7)
         plt.grid()
         plt.savefig('../img/result_topDown.pdf')
@@ -51,7 +49,6 @@ class Plot:
         plt.xlabel('Instância')
         plt.ylabel('Tempo/s')
         plt.plot(self.__name_instance, self.__time_topDown, color='steelblue')
-        # plt.legend(loc='upper left')
         plt.xticks(rotation=90, ha='right',fontsize=7)
         plt.grid()
         plt.savefig('../img/time_topDown.pdf')
@@ -170,6 +167,8 @@ class Plot:
         plt.show() 
   
 if __name__ == '__main__':
-    number_result, name_instance, time_topDown, result_topDown, time_bottomUp, result_bottomUp, avg_topDown, avg_bottomUp = load_result()
+
+    number_result, name_instance, time_topDown, result_topDown, time_bottomUp, result_bottomUp, avg_topDown, avg_bottomUp\
+         = Statistic().load_result()
     plot = Plot(number_result, name_instance, time_topDown, result_topDown, time_bottomUp, result_bottomUp, avg_topDown, avg_bottomUp)
     plot.plot_all()

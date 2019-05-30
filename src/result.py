@@ -31,6 +31,7 @@ def get_solutions(all_instances, number_items, weight_max, values_items, weight_
         print('\n0 results? OK! Done...\n')
         return False
     print('\nGenerating result...')
+    print('Generated 0/{} result done!'.format(n_result))
     for n in range(1, n_result+1):
         result_bottomUp, time_bottomUp, result_topDown, time_topDown = \
         Knapsack().get_result(all_instances, number_items, weight_max, values_items, weight_items)
@@ -47,5 +48,6 @@ def get_solutions(all_instances, number_items, weight_max, values_items, weight_
             elif system() == 'Darwin': mkdir('../result') 
         with open('../result/result'+str(n)+'.json','w') as file: file.write(json.dumps(data,indent=4))
         print('Generated {}/{} result done!'.format(n,n_result))
-    print('\nSuccess!')    
+    print('\nSuccess!')
+    print("run '$ python3 statistic.py' to get the statistics")
     print("run '$ python3 plot.py' to see the graphics\n")
