@@ -1,18 +1,23 @@
 # Trabalho 2 - Análise de Algoritmos
 
-## Requeriments
+## Requerimentos
 * `python3`
 * `pip3`
   
-* `$ pip3 install -r requirements.txt --user`
+* `$ python3 -m pip install -r requirements.txt --user`
 
-## How to use
+## Como usar
 
 * `$ python3 main.py n_sol "NUMBER_OF_RESULTS"`
-* *  Example - default
+* *  Exemplo - padrão
 * * `$ python3 main.py n_sol 1`
 * `$ python3 main.py get_sol`
+* `$ python3 statistic.py`
 * `$ python3 plot.py`
+
+## Relatório final do trabalho
+
+[Clique aqui](./report/main.pdf)
 
 ## License MIT
 
@@ -39,4 +44,4 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-[See here](LICENSE.md)
+[Veja aqui](LICENSE.md)
