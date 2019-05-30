@@ -8,6 +8,7 @@
 
 ## Como usar
 
+* `$ cd src/`
 * `$ python3 main.py n_sol "NUMBER_OF_RESULTS"`
 * *  Exemplo - padrão
 * * `$ python3 main.py n_sol 1`
